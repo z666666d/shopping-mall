@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybaits.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.shopping.order.mapper.AccountMapper">
+    <select id="getAccount" resultType="com.shopping.entities.account.Account">
+        SELECT
+            ACCT_NO AS acctNo,
+            USER_NAME AS userName,
+            ACCT_STATUS AS acctStatus
+        FROM
+            ACCOUNT
+    </select>
+
+
+    <select id="getAccountById" parameterType="java.lang.String" resultType="com.shopping.entities.account.Account">
+        SELECT
+            ACCT_NO AS acctNo,
+            USER_NAME AS userName,
+            ACCT_STATUS AS acctStatus
+        FROM
+            ACCOUNT
+        WHERE
+            ACCT_NO = #{acctNo}
+    </select>
+
+    <insert id="insert" parameterType="com.shopping.entities.account.Account">
+        INSERT INTO ACCOUNT(
+            ACCT_NO,
+            USER_NAME,
+            ACCT_STATUS
+        )
+        VALUES
+        (
+            #{account.acctNo},
+            #{account.userName},
+            #{account.acctStatus},
+        );
+    </insert>
+
+    <update id="updateById" parameterType="com.shopping.entities.account.Account">
+        UPDATE ACCOUNT SET
+            USER_NAME = #{account.userName}
+            ACCT_STATUS = #{account.acctStatus}
+        WHERE
+            ACCT_NO = #{account.acctNo}
+    </update>
+
+    <delete id="deleteById" parameterType="java.lang.String">
+        DELETE FROM ACCOUNT WHERE ACCT_NO = #{acctNo}
+    </delete>
+</mapper>

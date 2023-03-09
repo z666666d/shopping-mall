@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybaits.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.shopping.account.mapper.AccountMapper">
+
+    <insert id="insert" parameterType="com.shopping.entities.account.Account">
+        INSERT INTO ACCOUNT(
+            ACCT_NO,
+            USER_NAME,
+            ACCT_STATUS
+        )
+        VALUES
+        (
+            #{account.acctNo},
+            #{account.userName},
+            #{account.acctStatus},
+        );
+    </insert>
+
+</mapper>
